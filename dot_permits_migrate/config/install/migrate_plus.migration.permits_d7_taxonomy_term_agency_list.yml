@@ -1,0 +1,192 @@
+langcode: en
+status: true
+dependencies: {  }
+id: permits_d7_taxonomy_term_agency_list
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: alterFieldFormatterMigration
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: permits_taxanomy_migrate
+label: 'Taxonomy terms (Agency and Burearu/Mode List)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: agency_list
+process:
+  tid:
+    -
+      plugin: get
+      source: tid
+  vid:
+    -
+      plugin: migration_lookup
+      migration: permits_d7_taxonomy_vocabulary
+      source: vid
+  name:
+    -
+      plugin: get
+      source: name
+  description/value:
+    -
+      plugin: get
+      source: description
+  description/format:
+    -
+      plugin: get
+      source: format
+  weight:
+    -
+      plugin: get
+      source: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration:
+        - permits_d7_taxonomy_term_mip_permitting_timetable_selections
+        - permits_d7_taxonomy_term_mip_elevation_procedure_selections
+        - permits_d7_taxonomy_term_fy_quarter
+        - permits_d7_taxonomy_term_system_notifications
+        - permits_d7_taxonomy_term_reason_for_date_change
+        - permits_d7_taxonomy_term_action_outcome
+        - permits_d7_taxonomy_term_shpo
+        - permits_d7_taxonomy_term_milestone_groups
+        - permits_d7_taxonomy_term_cms_mode
+        - permits_d7_taxonomy_term_quarter
+        - permits_d7_taxonomy_term_month
+        - permits_d7_taxonomy_term_geography
+        - permits_d7_taxonomy_term_time_coverage
+        - permits_d7_taxonomy_term_topic
+        - permits_d7_taxonomy_term_product_type
+        - permits_d7_taxonomy_term_community_outcome_process_change_result
+        - permits_d7_taxonomy_term_community_outcomes_category
+        - permits_d7_taxonomy_term_reason_for_decline_of_cooperating_agency
+        - permits_d7_taxonomy_term_agency_status
+        - permits_d7_taxonomy_term_project_category
+        - permits_d7_taxonomy_term_sector
+        - permits_d7_taxonomy_term_facilitating_agency
+        - permits_d7_taxonomy_term_bureau_mode
+        - permits_d7_taxonomy_term_agency_list
+        - permits_d7_taxonomy_term_state
+        - permits_d7_taxonomy_term_project_type
+        - permits_d7_taxonomy_term_project_status
+        - permits_d7_taxonomy_term_grant_type
+        - permits_d7_taxonomy_term_grant_authorization
+        - permits_d7_taxonomy_term_landing_page_region
+        - permits_d7_taxonomy_term_event_type
+        - permits_d7_taxonomy_term_event_series
+        - permits_d7_taxonomy_term_location_taxonomize
+        - permits_d7_taxonomy_term_content_archive
+        - permits_d7_taxonomy_term_editorial_type
+        - permits_d7_taxonomy_term_category
+        - permits_d7_taxonomy_term_mode
+        - permits_d7_taxonomy_term_subject
+        - permits_d7_taxonomy_term_tags
+  parent:
+    -
+      plugin: default_value
+      default_value: 0
+      source: '@parent_id'
+  forum_container:
+    -
+      plugin: get
+      source: is_container
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  langcode:
+    -
+      plugin: get
+      source: language
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: agency_list
+migration_dependencies:
+  required:
+    - permits_d7_taxonomy_vocabulary
+  optional:
+    - permits_d7_field_instance
+    - permits_d7_taxonomy_vocabulary
+    - permits_d7_taxonomy_term_tags
+    - permits_d7_taxonomy_term_subject
+    - permits_d7_taxonomy_term_mode
+    - permits_d7_taxonomy_term_category
+    - permits_d7_taxonomy_term_editorial_type
+    - permits_d7_taxonomy_term_content_archive
+    - permits_d7_taxonomy_term_location_taxonomize
+    - permits_d7_taxonomy_term_event_series
+    - permits_d7_taxonomy_term_event_type
+    - permits_d7_taxonomy_term_landing_page_region
+    - permits_d7_taxonomy_term_grant_authorization
+    - permits_d7_taxonomy_term_grant_type
+    - permits_d7_taxonomy_term_project_status
+    - permits_d7_taxonomy_term_project_type
+    - permits_d7_taxonomy_term_state
+    - permits_d7_taxonomy_term_agency_list
+    - permits_d7_taxonomy_term_bureau_mode
+    - permits_d7_taxonomy_term_facilitating_agency
+    - permits_d7_taxonomy_term_sector
+    - permits_d7_taxonomy_term_project_category
+    - permits_d7_taxonomy_term_agency_status
+    - permits_d7_taxonomy_term_reason_for_decline_of_cooperating_agency
+    - permits_d7_taxonomy_term_community_outcomes_category
+    - permits_d7_taxonomy_term_community_outcome_process_change_result
+    - permits_d7_taxonomy_term_product_type
+    - permits_d7_taxonomy_term_topic
+    - permits_d7_taxonomy_term_time_coverage
+    - permits_d7_taxonomy_term_geography
+    - permits_d7_taxonomy_term_month
+    - permits_d7_taxonomy_term_quarter
+    - permits_d7_taxonomy_term_cms_mode
+    - permits_d7_taxonomy_term_milestone_groups
+    - permits_d7_taxonomy_term_shpo
+    - permits_d7_taxonomy_term_action_outcome
+    - permits_d7_taxonomy_term_reason_for_date_change
+    - permits_d7_taxonomy_term_system_notifications
+    - permits_d7_taxonomy_term_fy_quarter
+    - permits_d7_taxonomy_term_mip_elevation_procedure_selections
+    - permits_d7_taxonomy_term_mip_permitting_timetable_selections
+    - permits_d7_taxonomy_term_mip_permitting_timetable_selections
+    - permits_d7_taxonomy_term_mip_elevation_procedure_selections
+    - permits_d7_taxonomy_term_fy_quarter
+    - permits_d7_taxonomy_term_system_notifications
+    - permits_d7_taxonomy_term_reason_for_date_change
+    - permits_d7_taxonomy_term_action_outcome
+    - permits_d7_taxonomy_term_shpo
+    - permits_d7_taxonomy_term_milestone_groups
+    - permits_d7_taxonomy_term_cms_mode
+    - permits_d7_taxonomy_term_quarter
+    - permits_d7_taxonomy_term_month
+    - permits_d7_taxonomy_term_geography
+    - permits_d7_taxonomy_term_time_coverage
+    - permits_d7_taxonomy_term_topic
+    - permits_d7_taxonomy_term_product_type
+    - permits_d7_taxonomy_term_community_outcome_process_change_result
+    - permits_d7_taxonomy_term_community_outcomes_category
+    - permits_d7_taxonomy_term_reason_for_decline_of_cooperating_agency
+    - permits_d7_taxonomy_term_agency_status
+    - permits_d7_taxonomy_term_project_category
+    - permits_d7_taxonomy_term_sector
+    - permits_d7_taxonomy_term_facilitating_agency
+    - permits_d7_taxonomy_term_bureau_mode
+    - permits_d7_taxonomy_term_agency_list
+    - permits_d7_taxonomy_term_state
+    - permits_d7_taxonomy_term_project_type
+    - permits_d7_taxonomy_term_project_status
+    - permits_d7_taxonomy_term_grant_type
+    - permits_d7_taxonomy_term_grant_authorization
+    - permits_d7_taxonomy_term_landing_page_region
+    - permits_d7_taxonomy_term_event_type
+    - permits_d7_taxonomy_term_event_series
+    - permits_d7_taxonomy_term_location_taxonomize
+    - permits_d7_taxonomy_term_content_archive
+    - permits_d7_taxonomy_term_editorial_type
+    - permits_d7_taxonomy_term_category
+    - permits_d7_taxonomy_term_mode
+    - permits_d7_taxonomy_term_subject
+    - permits_d7_taxonomy_term_tags

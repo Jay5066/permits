@@ -1,0 +1,10 @@
+name: 'Migrate DOT Permits'
+type: module
+description: 'Migrate DOTpermits d7 to d8'
+core: 8.x
+package: 'Custom'
+dependencies: 
+# Our module depends on Migrate Plus because we'll use migration configuration
+# entities. We also have a soft-dependency on Migrate Tools since without it we
+# can't actually execute our migrations.
+  - migrate_plus

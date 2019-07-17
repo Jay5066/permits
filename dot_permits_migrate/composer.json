@@ -1,0 +1,13 @@
+{
+    "name": "dot_permits_migrate",
+    "type": "drupal-module",
+    "description": "Migrate DOTpermits d7 to d8",
+    "keywords": [
+    ],
+    "homepage": "https://www.drupal.org/project/dot_permits_migrate",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/dot_permits_migrate",
+        "source": "http://cgit.drupalcode.org/dot_permits_migrate",
+    }
+}
